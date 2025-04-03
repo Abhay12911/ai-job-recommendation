@@ -1,18 +1,20 @@
-import { connectDB } from "@/app/lib/mongodb";
-import User from "@/app/models/User";
-import NextAuth from "next-auth/next";
+import { connectDB } from '@/app/lib/mongodb';
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+; // Correct import path
+import User from '@/app/models/User'; // Ensure correct path
 
- export const authOptions = {
+export const authOptions = {
   providers: [
     GoogleProvider({
-      clientId : process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET ?? "secret",
   callbacks: {
-    async signIn({ user, account }) {
-      if (account.provider === "google") {
+    async signIn({ user, account }: any) { // Use `any` if strict types are causing issues
+      if (account?.provider === "google") {
         const { name, email } = user;
         try {
           await connectDB();
@@ -24,26 +26,22 @@ import GoogleProvider from "next-auth/providers/google";
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({
-                name,
-                email,
-              }),
+              body: JSON.stringify({ name, email }),
             });
 
             if (res.ok) {
-              return user;
+              return true; // Allow sign-in
             }
           }
         } catch (error) {
-          console.log(error);
+          console.error("Sign-in error:", error);
+          return false; // Block sign-in on error
         }
       }
-
-      return user;
+      return true;
     },
   },
 };
 
 const handler = NextAuth(authOptions);
-
 export { handler as GET, handler as POST };
