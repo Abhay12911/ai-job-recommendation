@@ -22,11 +22,11 @@ export default function Home() {
               Upload your resume and let our AI match you with the perfect job opportunities tailored to your skills and experience.
             </p>
             <div className="flex gap-4">
-              <Button size="lg" className="glow-border">
+              <Button size="lg" className="glow-border cursor-pointer">
                 Upload Resume
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="glow-border">
+              <Button variant="outline" size="lg" className="glow-border cursor-pointer">
                 Browse Jobs
               </Button>
             </div>
@@ -110,7 +110,7 @@ export default function Home() {
           <p className="text-xl text-white mb-8">
             Join thousands of professionals who have found their perfect career match through our AI-powered platform.
           </p>
-          <Button size="lg" className="text-lg px-8 glow-border">
+          <Button size="lg" className="text-lg px-8 glow-border cursor-pointer">
             Get Started Now
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

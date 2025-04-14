@@ -54,7 +54,7 @@ export default function UploadPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/20">
+    <main className="min-h-screen bg-gradient-to-bl from-black via-gray-900 to-indigo-400">
       <Appbar />
       
       <div className="container mx-auto px-4 py-16">
@@ -62,7 +62,7 @@ export default function UploadPage() {
           <Card className="p-8 glow-border bg-card/50 backdrop-blur-sm">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold mb-4">Upload Your Resume</h1>
-              <p className="text-muted-foreground">
+              <p className="text-white text-lg">
                 Let our AI analyze your resume and find the perfect job matches for you
               </p>
             </div>
@@ -84,10 +84,10 @@ export default function UploadPage() {
                   />
                   <Button
                     variant="outline"
-                    className="relative glow-border"
+                    className="relative glow-border cursor-pointer"
                     onClick={() => document.getElementById("resume-upload")?.click()}
                   >
-                    <Upload className="h-4 w-4 mr-2" />
+                    <Upload className="h-4 w-4 mr-2 cursor-pointer"/>
                     Choose File
                   </Button>
                 </div>
@@ -100,7 +100,7 @@ export default function UploadPage() {
 
               <div className="flex flex-col items-center gap-4">
                 <Button
-                  className="w-full max-w-xs glow-border"
+                  className="w-full max-w-xs glow-border cursor-pointer"
                   onClick={handleUpload}
                   disabled={!file || isLoading}
                 >
