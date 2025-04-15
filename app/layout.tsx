@@ -40,7 +40,7 @@
 import "./globals.css";
 import { Providers } from "./providers"; // adjust the path if needed
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./lib/auth";
 
 export default async function RootLayout({
   children,
