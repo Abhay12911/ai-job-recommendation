@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/app/lib/mongodb";
 import { Resume } from "@/app/models/resume";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/auth";
 import { jsonrepair } from "jsonrepair";
 
 export async function GET() {
