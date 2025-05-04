@@ -13,15 +13,15 @@ export function Appbar() {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/api/auth/signin");
-    }
-  }, [status, router]);
+  // useEffect(() => {
+  //   if (status === "unauthenticated") {
+  //     router.push("/api/auth/signin");
+  //   }
+  // }, [status, router]);
 
-  if (status === "loading") {
-    return null; // or a loader/spinner
-  }
+  // if (status === "loading") {
+  //   return null; // or a loader/spinner
+  // }
 
   return (
     <div className="border-b">
